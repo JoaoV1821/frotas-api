@@ -1,0 +1,107 @@
+package com.ufpr.frotas.domain.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ufpr.frotas.domain.model.enums.PerfilEnum;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Entity
+@Table(name = "users")
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserModel {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String nome;
+    private String cnh;
+    private String validadeCnh;
+    private String email;
+    private String senha;
+
+    @Enumerated(EnumType.STRING)
+    private PerfilEnum perfil;
+
+    private Boolean ativo;
+    private String telefone;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
+    private EnderecoModel endereco;
+
+    @OneToMany(mappedBy = "motorista")
+    private List <AgendamentoModel> agendamentos;
+
+    @OneToMany(mappedBy = "motorista")
+    private List<AbastecimentoModel> abastecimentos;
+
+    @OneToMany(mappedBy = "motorista", cascade = CascadeType.ALL)
+    private List<OcorrenciaModel> ocorrencias = new ArrayList<>();
+
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getSenha() {
+        return this.senha;
+    }
+
+    public PerfilEnum getPerfil() {
+        return this.perfil;
+    }
+
+    public Boolean getAtivo() {
+        return this.ativo;
+    }
+
+    public String getTelefone() {
+        return this.telefone;
+    }
+
+    public String getCnh() {
+        return this.cnh;
+    }
+
+    public String getValidadeCnh() {
+        return this.validadeCnh;
+    }
+
+    public EnderecoModel getEndereco() {
+        return this.endereco;
+    }
+
+    public void setSenha(String value) {
+        this.senha = value;
+    }
+
+    public void setAtivo(Boolean value) {
+        this.ativo = value;
+    }
+}
