@@ -9,19 +9,17 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "ocorrencias")
 public class OcorrenciaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String descricao;
     private String dataRegistro;
@@ -34,4 +32,40 @@ public class OcorrenciaModel {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "motorista_id", nullable = false)
     private UserModel motorista;
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public String getDescricao() {
+        return this.descricao;
+    }
+
+    public VeiculoModel getVeiculo() {
+        return this.veiculo;
+    }
+
+    public UserModel getMotorista() {
+        return this.motorista;
+    }
+
+     public String getDataRegistro() {
+        return this.dataRegistro;
+    }
+
+    public void setDescricao(String value) {
+        this.descricao = value;
+    }
+
+    public void setVeiculo(VeiculoModel value) {
+        this.veiculo = value;
+    }
+
+    public void setMotorista(UserModel value) {
+        this.motorista = value;
+    }
+
+    public void setDataRegistro(String value) {
+        this.dataRegistro = value;
+    }
 }

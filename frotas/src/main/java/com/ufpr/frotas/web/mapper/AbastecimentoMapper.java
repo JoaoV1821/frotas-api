@@ -2,13 +2,15 @@ package com.ufpr.frotas.web.mapper;
 
 import org.mapstruct.Mapper;
 
-import com.ufpr.frotas.application.dto.AgendamentoRequestDTO;
-import com.ufpr.frotas.application.dto.AgendamentoResponseDTO;
-import com.ufpr.frotas.domain.model.AgendamentoModel;
+import com.ufpr.frotas.application.dto.AbastecimentoRequestDTO;
+import com.ufpr.frotas.application.dto.AbastecimentoResponseDTO;
+
+import com.ufpr.frotas.domain.model.AbastecimentoModel;
 
 
-@Mapper(componentModel = "spring", uses = VeiculoMapper.class)
+
+@Mapper(componentModel = "spring", uses ={VeiculoMapper.class, UserMapper.class})
 public interface AbastecimentoMapper {
-    AgendamentoResponseDTO toDTO(AgendamentoModel model);
-    AgendamentoModel toEntity(AgendamentoRequestDTO dto);
+    AbastecimentoResponseDTO toDTO(AbastecimentoModel model);
+    AbastecimentoModel toEntity(AbastecimentoRequestDTO dto);
 }

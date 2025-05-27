@@ -25,12 +25,12 @@ public class AbastecimentoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String data;
 
     @Enumerated(EnumType.STRING)
-    private TipoCombustivelEnum tipo_combustivel;
+    private TipoCombustivelEnum tipoCombustivel;
 
     private Double valor;
     private Double quilometragem;
@@ -42,5 +42,56 @@ public class AbastecimentoModel {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "motorista_id", nullable = false)
     private UserModel motorista;
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public String getData() {
+        return this.data;
+    }
+
+    public Double getValor() {
+        return this.valor;
+    }
+
+    public TipoCombustivelEnum getTipoCombustivel() {
+        return this.tipoCombustivel;
+    }
+
+    public Double getQuilometragem() {
+        return this.quilometragem;
+    }
+
+    public VeiculoModel getVeiculo() {
+        return this.veiculo;
+    }
+
+    public UserModel getMotorista() {
+        return this.motorista;
+    }
+
+    public void setData(String value) {
+        this.data = value;
+    }
+
+    public void setValor(Double value) {
+        this.valor = value;
+    }
+
+    public void setQuilometragem(Double value) {
+        this.quilometragem = value;
+    }
+
+    public void setVeiculo(VeiculoModel value) {
+        this.veiculo = value;
+    }
+
+    public void setMotorista(UserModel value) {
+        this.motorista = value;
+    } 
     
+    public void setTipoCombustivel (TipoCombustivelEnum value) {
+        this.tipoCombustivel = value;
+    }
 }

@@ -29,7 +29,7 @@ public class VeiculoRequestDTO {
         return this.modelo;
     }
 
-    public String tipo() {
+    public String getTipo() {
         return this.tipo;
     }
 
@@ -37,15 +37,15 @@ public class VeiculoRequestDTO {
         return this.ano;
     }
 
-    public Double quilometragemAtual( ) {
+    public Double getQuilometragemAtual( ) {
         return this.quilometragemAtual;
     }
 
-    public StatusVeiculoEnum status() {
+    public StatusVeiculoEnum getStatus() {
         return this.status;
     }
 
-    public String renavam() {
+    public String getRenavam() {
         return this.renavam;
     }
 

@@ -60,4 +60,23 @@ public class AgendamentoService {
     public Optional<AgendamentoResponseDTO> buscarPorId(Long id) {
         return agendamentoRepository.findById(id).map(agendamentoMapper::toDTO);
     }
+
+    public List<AgendamentoResponseDTO> buscarPorMotorista(Long id) {
+        return agendamentoRepository.findByMotoristaId(id).stream()
+        .map(agendamentoMapper::toDTO)
+        .toList();
+    }
+
+    public AgendamentoResponseDTO setStatus(Long id, StatusAgendamentoEnum status) {
+
+      Optional <AgendamentoModel> agendamentoBd = Optional.of(agendamentoRepository.findById(id).orElseThrow(() -> new RuntimeException("Agendamento não encontrado"))); 
+
+       AgendamentoModel agendamento = agendamentoBd.get();
+
+       agendamento.setStatus(status);
+
+       agendamentoRepository.save(agendamento);
+
+       return agendamentoMapper.toDTO(agendamento);
+    }
 }

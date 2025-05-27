@@ -15,9 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.Data;
 
-@Data
 @Entity
 @Table(name = "veiculos")
 public class VeiculoModel {
@@ -29,8 +27,7 @@ public class VeiculoModel {
 
     private String modelo;
 
-    @Enumerated(EnumType.STRING)
-    private StatusVeiculoEnum tipo;
+    private String tipo;
 
     private String ano;
     private Double quilometragemAtual;
@@ -69,7 +66,7 @@ public class VeiculoModel {
         return this.modelo;
     }
 
-    public StatusVeiculoEnum tipo() {
+    public String getTipo() {
         return this.tipo;
     }
 
@@ -77,13 +74,11 @@ public class VeiculoModel {
         return this.ano;
     }
 
-    public Double quilometragemAtual( ) {
+    public Double getQuilometragemAtual( ) {
         return this.quilometragemAtual;
     }
 
-
-
-    public String renavam() {
+    public String getRenavam() {
         return this.renavam;
     }
 
@@ -95,8 +90,37 @@ public class VeiculoModel {
         this.status = value;
     }
 
+    public void setId(Long veiculoId) {
+        this.veiculoId = veiculoId;
+    }
 
-    
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
+    }
+
+    public void setQuilometragemAtual(Double quilometragemAtual) {
+        this.quilometragemAtual = quilometragemAtual;
+    }
+
+    public void setRenavam(String renavam) {
+        this.renavam = renavam;
+    }
+
+    public void setChassi(String chassi) {
+        this.chassi = chassi;
+    }
 }
 
 

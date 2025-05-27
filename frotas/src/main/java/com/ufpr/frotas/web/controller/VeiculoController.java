@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ufpr.frotas.application.dto.VeiculoRequestDTO;
 import com.ufpr.frotas.application.dto.VeiculoResponseDTO;
 import com.ufpr.frotas.application.service.VeiculoService;
-
+import com.ufpr.frotas.domain.model.enums.StatusVeiculoEnum;
+import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
@@ -45,5 +47,16 @@ public class VeiculoController {
     @GetMapping("/get/{id}")
     public ResponseEntity <Optional<VeiculoResponseDTO>> buscar(@PathVariable Long id) {
         return ResponseEntity.ok(veiculoService.buscarPorId(id));
+    }
+
+    @PutMapping("/put/{id}")
+    public ResponseEntity <VeiculoResponseDTO> putVeiculo(@PathVariable Long id, @RequestBody VeiculoRequestDTO entity) {
+        
+        return ResponseEntity.status(HttpStatus.CREATED).body(veiculoService.putVeiculo(id, entity));
+    }
+
+    @PatchMapping("/status/{id}")
+    public ResponseEntity <VeiculoResponseDTO> setStatus(@PathVariable Long id, @RequestBody StatusVeiculoEnum status) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(veiculoService.inativar(id, status));
     }
 }

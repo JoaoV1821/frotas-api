@@ -36,6 +36,11 @@ public class AgendamentoController {
         return ResponseEntity.ok(agendamentoService.buscarPorId(id));
     }
 
+    @GetMapping("/getAllMotorista/{id}")
+    public ResponseEntity<List<AgendamentoResponseDTO>> listarPorMotorista(@PathVariable Long id) {
+        return ResponseEntity.ok(agendamentoService.buscarPorMotorista(id));
+    }
+
     @GetMapping("/getAll")
     public ResponseEntity<List<AgendamentoResponseDTO>> listarTodos() {
         return ResponseEntity.ok(agendamentoService.listarTodos());

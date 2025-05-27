@@ -104,4 +104,39 @@ public class UserModel {
     public void setAtivo(Boolean value) {
         this.ativo = value;
     }
+
+    public void setId(Long id) {
+    this.id = id;
+}
+
+public void setNome(String nome) {
+    this.nome = nome;
+}
+
+public void setEmail(String email) {
+    this.email = email;
+}
+
+
+public void setPerfil(PerfilEnum perfil) {
+    this.perfil = perfil;
+}
+
+
+public void setTelefone(String telefone) {
+    this.telefone = telefone;
+}
+
+public void setCnh(String cnh) {
+    this.cnh = cnh;
+}
+
+public void setValidadeCnh(String validadeCnh) {
+    this.validadeCnh = validadeCnh;
+}
+
+public void setEndereco(EnderecoModel endereco) {
+    this.endereco = endereco;
+}
+
 }

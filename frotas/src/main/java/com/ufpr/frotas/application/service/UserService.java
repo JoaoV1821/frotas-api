@@ -3,6 +3,7 @@ package com.ufpr.frotas.application.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.ufpr.frotas.application.dto.UserRequestDTO;
 import com.ufpr.frotas.application.dto.UserResponseDTO;
@@ -17,15 +18,20 @@ public class UserService {
 
     private final UserMapper userMapper;
 
-    public UserService(UserRepository userRepository, UserMapper userMapper)  {
+    private final PasswordEncoder passwordEncoder;
+
+    public UserService(UserRepository userRepository, UserMapper userMapper, PasswordEncoder cript)  {
         this.userRepository = userRepository;
 
         this.userMapper = userMapper;
+
+        this.passwordEncoder = cript;
     }
 
      public UserResponseDTO criarUser(UserRequestDTO dto) {
 
         UserModel user = userMapper.toEntity(dto);
+        
         user.setNome(dto.getNome());
         user.setEmail(dto.getEmail());
         user.setSenha(encriptar(dto.getSenha()));
@@ -37,7 +43,6 @@ public class UserService {
 
         user.getEndereco().setCep(dto.getEndereco().getCep());
 
-        
         user.getEndereco().setLogradouro(dto.getEndereco().getLogradouro());
 
         user.getEndereco().setBairro(dto.getEndereco().getBairro());
@@ -90,7 +95,6 @@ public class UserService {
 
         user.getEndereco().setCep(dto.getEndereco().getCep());
 
-        
         user.getEndereco().setLogradouro(dto.getEndereco().getLogradouro());
 
         user.getEndereco().setBairro(dto.getEndereco().getBairro());
@@ -110,8 +114,8 @@ public class UserService {
     }
 
      private String encriptar(String senha) {
-        // Lógica SHA-256 com SALT aqui
-        return senha;
+        
+        return passwordEncoder.encode(senha);
     }
 
      public UserResponseDTO inativar(Long id) {
