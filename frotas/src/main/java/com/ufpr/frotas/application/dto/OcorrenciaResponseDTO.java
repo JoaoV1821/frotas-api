@@ -1,5 +1,7 @@
 package com.ufpr.frotas.application.dto;
 
+import com.ufpr.frotas.domain.model.UserModel;
+
 import lombok.Data;
 
 @Data
@@ -9,7 +11,7 @@ public class OcorrenciaResponseDTO {
     private String descricao;
     private String dataRegistro;
     private VeiculoResponseDTO veiculo;
-    private UserResponseDTO motorista;
+    private UserModel motorista;
     
 
     private Long getId() {
@@ -28,7 +30,7 @@ public class OcorrenciaResponseDTO {
         return this.veiculo;
     }
 
-    private UserResponseDTO getMotorista() {
+    private UserModel getMotorista() {
         return this.motorista;
     }
     

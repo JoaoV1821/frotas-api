@@ -1,33 +1,47 @@
 package com.ufpr.frotas.application.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.ufpr.frotas.application.dto.UserRequestDTO;
 import com.ufpr.frotas.application.dto.UserResponseDTO;
 import com.ufpr.frotas.domain.model.UserModel;
-import com.ufpr.frotas.domain.model.enums.PerfilEnum;
+
 import com.ufpr.frotas.domain.repository.UserRepository;
+
 import com.ufpr.frotas.web.mapper.UserMapper;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
-
+    private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
 
-    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, UserMapper userMapper, PasswordEncoder cript)  {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, UserMapper mapper) {
         this.userRepository = userRepository;
-
-        this.userMapper = userMapper;
-
-        this.passwordEncoder = cript;
+        this.passwordEncoder = passwordEncoder;
+        this.userMapper = mapper;
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        UserModel user = userRepository.findByEmail(username)
+            .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        return new org.springframework.security.core.userdetails.User(
+            user.getNome(),
+            user.getSenha(),
+            new ArrayList<>()
+        );
+    }
+    
      public UserResponseDTO criarUser(UserRequestDTO dto) {
 
         UserModel user = userMapper.toEntity(dto);
@@ -67,8 +81,7 @@ public class UserService {
     }
 
     public List<UserResponseDTO> listarMotoristasAtivos() {
-        return userRepository.findByPerfil(PerfilEnum.MOTORISTA).stream()
-            .filter(UserModel::getAtivo)
+        return userRepository.findByAtivoTrue().stream()
             .map(userMapper::toDTO)
             .toList();
     }
@@ -128,5 +141,11 @@ public class UserService {
          return userMapper.toDTO(user);
      }
 
+     public UserDetails buscarPorEmail(String email) {
+        UserDetails user = userRepository.findByEmail(email)
+            .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        
+            return user;
+    }
     
 }

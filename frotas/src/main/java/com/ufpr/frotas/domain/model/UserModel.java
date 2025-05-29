@@ -1,7 +1,11 @@
 package com.ufpr.frotas.domain.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.ufpr.frotas.domain.model.enums.PerfilEnum;
 
@@ -25,7 +29,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "users")
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserModel {
+public class UserModel implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -109,34 +113,51 @@ public class UserModel {
     this.id = id;
 }
 
-public void setNome(String nome) {
-    this.nome = nome;
-}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-public void setEmail(String email) {
-    this.email = email;
-}
-
-
-public void setPerfil(PerfilEnum perfil) {
-    this.perfil = perfil;
-}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
 
-public void setTelefone(String telefone) {
-    this.telefone = telefone;
-}
+    public void setPerfil(PerfilEnum perfil) {
+        this.perfil = perfil;
+    }
 
-public void setCnh(String cnh) {
-    this.cnh = cnh;
-}
 
-public void setValidadeCnh(String validadeCnh) {
-    this.validadeCnh = validadeCnh;
-}
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 
-public void setEndereco(EnderecoModel endereco) {
-    this.endereco = endereco;
-}
+    public void setCnh(String cnh) {
+        this.cnh = cnh;
+    }
+
+    public void setValidadeCnh(String validadeCnh) {
+        this.validadeCnh = validadeCnh;
+    }
+
+    public void setEndereco(EnderecoModel endereco) {
+        this.endereco = endereco;
+    }
+
+
+    @Override
+    public String getPassword() {
+        return this.senha;
+    }
+
+    @Override
+    public String getUsername() {
+    return this.email;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAuthorities'");
+    }
 
 }
