@@ -2,9 +2,6 @@ package com.ufpr.frotas.application.dto;
 
 import com.ufpr.frotas.domain.model.enums.PerfilEnum;
 
-import lombok.Data;
-
-@Data
 public class UserResponseDTO {
     private Long id;
     private String nome;
@@ -15,48 +12,85 @@ public class UserResponseDTO {
     private String telefone;
     private String cnh;
     private String validadeCnh;
-    private EnderecoRequestDTO endereco;
+    private EnderecoResponseDTO endereco;
 
-
-
-    
     public Long getId() {
-        return this.id;
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
-        return this.nome;
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getEmail() {
-        return this.email;
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public PerfilEnum getPerfil() {
-        return this.perfil;
+        return perfil;
     }
 
-    public Boolean getAtivo() {
-        return this.ativo;
-    }
-
-    public String getTelefone() {
-        return this.telefone;
-    }
-
-    public String getCnh() {
-        return this.cnh;
-    }
-
-    public String getValidadeCnh() {
-        return this.validadeCnh;
+    public void setPerfil(PerfilEnum perfil) {
+        this.perfil = perfil;
     }
 
     public String getSenha() {
-        return this.senha;
+        return senha;
     }
 
-    public EnderecoRequestDTO getEndereco() {
-        return this.endereco;
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getCnh() {
+        return cnh;
+    }
+
+    public void setCnh(String cnh) {
+        this.cnh = cnh;
+    }
+
+    public String getValidadeCnh() {
+        return validadeCnh;
+    }
+
+    public void setValidadeCnh(String validadeCnh) {
+        this.validadeCnh = validadeCnh;
+    }
+
+    public EnderecoResponseDTO getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(EnderecoResponseDTO endereco) {
+        this.endereco = endereco;
     }
 }

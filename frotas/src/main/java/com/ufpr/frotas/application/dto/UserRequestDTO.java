@@ -14,7 +14,7 @@ public class UserRequestDTO {
     private String telefone;
     private String cnh;
     private String validadeCnh;
-    private EnderecoResponseDTO endereco;
+    private EnderecoRequestDTO endereco;
 
 
     public String getNome() {
@@ -49,7 +49,7 @@ public class UserRequestDTO {
         return this.validadeCnh;
     }
 
-    public EnderecoResponseDTO getEndereco() {
+    public EnderecoRequestDTO getEndereco() {
         return this.endereco;
     }
 
