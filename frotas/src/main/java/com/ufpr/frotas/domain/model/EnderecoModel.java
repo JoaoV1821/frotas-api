@@ -1,6 +1,7 @@
 package com.ufpr.frotas.domain.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,7 +34,12 @@ public class EnderecoModel {
     private String numero;
 
      @OneToOne(mappedBy = "endereco", cascade = CascadeType.ALL)
+     @JsonIgnore
      private UserModel usuario;
+
+    public Integer getId() {
+        return this.id;
+    }
 
      public String getCep() {
         return this.cep;
@@ -62,6 +68,18 @@ public class EnderecoModel {
 
     public String getNumero() {
         return this.numero;
+    }
+
+    public UserModel getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(UserModel usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setCep(String cep) {

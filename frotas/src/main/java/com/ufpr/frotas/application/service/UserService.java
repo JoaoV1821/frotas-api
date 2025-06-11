@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.ufpr.frotas.domain.model.EnderecoModel;
+import com.ufpr.frotas.domain.repository.EnderecoRepository;
+import com.ufpr.frotas.web.mapper.EnderecoMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,27 +25,31 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
+    private final EnderecoRepository enderecoRepository;
 
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, UserMapper mapper) {
+    public UserService(UserRepository userRepository,
+                       PasswordEncoder passwordEncoder,
+                       UserMapper mapper,
+                       EnderecoRepository enderecoRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.userMapper = mapper;
+        this.enderecoRepository = enderecoRepository;
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserModel user = userRepository.findByEmail(username)
-            .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        UserModel user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
 
-        return new org.springframework.security.core.userdetails.User(
-            user.getEmail(),
-            user.getSenha(),
-            new ArrayList<>()
-        );
+        System.out.println(">> Usuario autenticado: " + user.getEmail());
+        System.out.println(">> Autoridades: " + user.getAuthorities());
+
+        return user;
     }
-    
-     public UserResponseDTO criarUser(UserRequestDTO dto) {
+
+    public UserResponseDTO criarUser(UserRequestDTO dto) {
 
         UserModel user = userMapper.toEntity(dto);
         
@@ -55,21 +62,24 @@ public class UserService implements UserDetailsService {
         user.setCnh(dto.getCnh());
         user.setValidadeCnh(dto.getValidadeCnh());
 
-        user.getEndereco().setCep(dto.getEndereco().getCep());
+        EnderecoModel endereco = new EnderecoModel();
+        endereco.setCep(dto.getEndereco().getCep());
+        endereco.setLogradouro(dto.getEndereco().getLogradouro());
+        endereco.setBairro(dto.getEndereco().getBairro());
+        endereco.setCidade(dto.getEndereco().getCidade());
+        endereco.setEstado(dto.getEndereco().getEstado());
+        endereco.setComplemento(dto.getEndereco().getComplemento());
+        endereco.setNumero(dto.getEndereco().getNumero());
 
-        user.getEndereco().setLogradouro(dto.getEndereco().getLogradouro());
-
-        user.getEndereco().setBairro(dto.getEndereco().getBairro());
-
-        user.getEndereco().setCidade(dto.getEndereco().getCidade());
-
-        user.getEndereco().setEstado(dto.getEndereco().getEstado());
-
-        user.getEndereco().setComplemento(dto.getEndereco().getComplemento());
-
-        user.getEndereco().setNumero(dto.getEndereco().getNumero());
+        user.setEndereco(endereco);
 
         UserModel salvo = userRepository.save(user);
+
+        endereco.setUsuario(salvo);
+
+        EnderecoModel enderecoSalvo = enderecoRepository.save(endereco);
+
+        salvo.setEndereco(enderecoSalvo);
 
         return userMapper.toDTO(salvo);
     }

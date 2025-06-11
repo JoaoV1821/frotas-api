@@ -53,7 +53,40 @@ public class UserRequestDTO {
         return this.endereco;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public void setPerfil(PerfilEnum perfil) {
+        this.perfil = perfil;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public void setCnh(String cnh) {
+        this.cnh = cnh;
+    }
+
+    public void setValidadeCnh(String validadeCnh) {
+        this.validadeCnh = validadeCnh;
+    }
+
+    public void setEndereco(EnderecoRequestDTO endereco) {
+        this.endereco = endereco;
+    }
 
 }

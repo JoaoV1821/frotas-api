@@ -7,8 +7,9 @@ import com.ufpr.frotas.application.dto.AgendamentoResponseDTO;
 import com.ufpr.frotas.domain.model.AgendamentoModel;
 
 
-@Mapper(componentModel = "spring", uses = VeiculoMapper.class)
+@Mapper(componentModel = "spring", uses = {VeiculoMapper.class, UserMapper.class})
 public interface AgendamentoMapper {
     AgendamentoResponseDTO toDTO(AgendamentoModel model);
     AgendamentoModel toEntity(AgendamentoRequestDTO dto);
 }
+

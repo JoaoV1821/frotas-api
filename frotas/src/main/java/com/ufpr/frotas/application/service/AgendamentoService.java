@@ -47,6 +47,11 @@ public class AgendamentoService {
         entity.setVeiculo(veiculo);
         entity.setMotorista(motorista);
         entity.setStatus(StatusAgendamentoEnum.PENDENTE);
+        entity.setDataSaida(dto.getDataSaida());
+        entity.setDataRetorno(dto.getDataRetorno());
+        entity.setJustificativa(dto.getJustificativa());
+        entity.setDestino(dto.getDestino());
+        entity.setDataInicio(dto.getDataInicio());
 
         return agendamentoMapper.toDTO(agendamentoRepository.save(entity));
     }

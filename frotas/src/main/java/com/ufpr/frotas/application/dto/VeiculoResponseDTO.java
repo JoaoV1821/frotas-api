@@ -41,4 +41,33 @@ public class VeiculoResponseDTO {
     public StatusVeiculoEnum status() {
         return this.status;
     }
+
+    public void setId(Long id) {
+        this.veiculoId = id;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
+    public void setQuilometragemAtual(int quilometragemAtual) {
+        this.quilometragemAtual = quilometragemAtual;
+    }
+
+    public void setStatus(StatusVeiculoEnum status) {
+        this.status = status;
+    }
+
 }

@@ -14,7 +14,13 @@ public class AgendamentoRequestDTO {
     private String dataRetorno;
     private String justificativa;
     private String destino;
-    private StatusAgendamentoEnum status;
+    private StatusAgendamentoEnum statusAgenda;
+    private String dataInicio;
+    private String dataFim;
+    private Double quilometragemInicial;
+    private Double quilometragemFinal;
+    private String observacaoInicio;
+    private String observacaoFim;
     
 
   public Long getId() {
@@ -46,7 +52,87 @@ public class AgendamentoRequestDTO {
   }
 
   public StatusAgendamentoEnum getAgendamentoStatus() {
-      return this.status;
+      return this.statusAgenda;
   }
+
+    public String getDataInicio() {
+        return this.dataInicio;
+    }
+
+    public String getDataFim() {
+        return this.dataFim;
+    }
+
+    public Double getQuilometragemInicial() {
+        return this.quilometragemInicial;
+    }
+
+    public Double getQuilometragemFinal() {
+        return this.quilometragemFinal;
+    }
+
+    public String getObservacaoInicio() {
+        return this.observacaoInicio;
+    }
+
+    public String getObservacaoFim() {
+        return this.observacaoFim;
+    }
+
+    public void setId(Long id) {
+        this.agendamentoId = id;
+    }
+
+    public void setVeiculo(VeiculoResponseDTO veiculo) {
+        this.veiculo = veiculo;
+    }
+
+    public void setMotorista(UserResponseDTO motorista) {
+        this.motorista = motorista;
+    }
+
+    public void setDataSaida(String dataSaida) {
+        this.dataSaida = dataSaida;
+    }
+
+    public void setDataRetorno(String dataRetorno) {
+        this.dataRetorno = dataRetorno;
+    }
+
+    public void setJustificativa(String justificativa) {
+        this.justificativa = justificativa;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
+    }
+
+    public void setStatus(StatusAgendamentoEnum status) {
+        this.statusAgenda = status;
+    }
+
+    public void setDataInicio(String dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public void setDataFim(String dataFim) {
+        this.dataFim = dataFim;
+    }
+
+    public void setQuilometragemInicial(Double quilometragemInicial) {
+        this.quilometragemInicial = quilometragemInicial;
+    }
+
+    public void setQuilometragemFinal(Double quilometragemFinal) {
+        this.quilometragemFinal = quilometragemFinal;
+    }
+
+    public void setObservacaoInicio(String observacaoInicio) {
+        this.observacaoInicio = observacaoInicio;
+    }
+
+    public void setObservacaoFim(String observacaoFim) {
+        this.observacaoFim = observacaoFim;
+    }
 
 }

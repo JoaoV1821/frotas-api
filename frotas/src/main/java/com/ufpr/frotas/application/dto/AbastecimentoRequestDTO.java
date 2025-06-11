@@ -11,7 +11,7 @@ public class AbastecimentoRequestDTO {
     
     private Long id;
     private String data;
-    private TipoCombustivelEnum tipo_combustivel;
+    private TipoCombustivelEnum tipoCombustivel;
     private Double valor;
     private Double quilometragem;
 

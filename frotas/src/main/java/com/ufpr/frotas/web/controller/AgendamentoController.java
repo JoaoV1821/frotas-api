@@ -20,7 +20,6 @@ import com.ufpr.frotas.application.service.AgendamentoService;
 
 @RestController
 @RequestMapping("/api/agendamentos")
-
 public class AgendamentoController {
 
     @Autowired

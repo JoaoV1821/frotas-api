@@ -13,8 +13,6 @@ public class EnderecoResponseDTO {
     private String complemento;
     private String numero;
 
-
-    
     public String getCep() {
         return this.cep;
     }
@@ -43,4 +41,33 @@ public class EnderecoResponseDTO {
     public String getNumero() {
         return this.numero;
     }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
 }

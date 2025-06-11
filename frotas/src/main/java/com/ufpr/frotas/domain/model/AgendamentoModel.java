@@ -32,9 +32,13 @@ public class AgendamentoModel {
 
     private String dataSaida;
     private String dataRetorno;
-    
-    @OneToOne(mappedBy = "agendamento", cascade = CascadeType.ALL, orphanRemoval = true)
-    private ViagemModel viagem;
+
+    private Double quilometragemInicial;
+    private Double quilometragemFinal;
+    private String dataInicio;
+    private String dataFim;
+    private String observacaoInicio;
+    private String observacaoFim;
 
 
     @Enumerated(EnumType.STRING)
@@ -57,6 +61,7 @@ public class AgendamentoModel {
   public Long getId() {
     return this.agendamentoId;
   }
+
   public VeiculoModel getVeiculo() {
     return this.veiculo;
   }
@@ -81,6 +86,23 @@ public class AgendamentoModel {
     return this.destino;
   }
 
+    public void setDataSaida(String value) {
+        this.dataSaida = value;
+    }
+
+    public void setDataRetorno(String value) {
+        this.dataRetorno = value;
+    }
+
+    public void setJustificativa(String value) {
+            this.justificativa = value;
+        }
+
+    public void setDestino(String value) {
+
+        this.destino = value;
+    }
+
   public void setVeiculo(VeiculoModel value) {
         this.veiculo = value;
   }
@@ -96,5 +118,53 @@ public class AgendamentoModel {
   public StatusAgendamentoEnum getStatus() {
       return this.statusAgenda;
   }
+
+    public String getDataInicio() {
+        return this.dataInicio;
+    }
+
+    public String getDataFim() {
+        return this.dataFim;
+    }
+
+    public String getObservacaoInicio() {
+        return this.observacaoInicio;
+    }
+
+    public String getObservacaoFim() {
+        return this.observacaoFim;
+    }
+
+    public void setDataInicio(String value) {
+        this.dataInicio = value;
+    }
+
+    public void setDataFim(String value) {
+        this.dataFim = value;
+    }
+
+    public void setObservacaoInicio(String value) {
+        this.observacaoInicio = value;
+    }
+
+    public void setObservacaoFim(String value) {
+        this.observacaoFim = value;
+    }
+
+    public Double getQuilometragemInicial() {
+        return this.quilometragemInicial;
+    }
+
+    public Double getQuilometragemFinal() {
+        return this.quilometragemFinal;
+    }
+
+    public void setQuilometragemInicial(Double value) {
+        this.quilometragemInicial = value;
+    }
+
+    public void setQuilometragemFinal(Double value) {
+        this.quilometragemFinal = value;
+    }
 
 }

@@ -51,5 +51,38 @@ public class VeiculoRequestDTO {
 
     public String getChassi() {
         return this.chassi;
-    } 
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
+    }
+
+    public void setQuilometragemAtual(Double quilometragemAtual) {
+        this.quilometragemAtual = quilometragemAtual;
+    }
+
+    public void setStatus(StatusVeiculoEnum status) {
+        this.status = status;
+    }
+
+    public void setRenavam(String renavam) {
+        this.renavam = renavam;
+    }
+
+    public void setChassi(String chassi) {
+        this.chassi = chassi;
+    }
+
 }
