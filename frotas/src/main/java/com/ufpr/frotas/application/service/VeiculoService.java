@@ -85,4 +85,11 @@ public class VeiculoService {
 
          return veiculoMapper.toDTO(veiculo);
      }
+
+    public void deletar(Long id) {
+        if (!veiculoRepository.existsById(id)) {
+            throw new RuntimeException("Veículo não encontrado");
+        }
+        veiculoRepository.deleteById(id);
+    }
 }

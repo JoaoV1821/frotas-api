@@ -11,6 +11,7 @@ public class UserResponseDTO {
     private Boolean ativo;
     private String telefone;
     private String cnh;
+    private String cpf;
     private String validadeCnh;
     private EnderecoResponseDTO endereco;
 
@@ -20,6 +21,14 @@ public class UserResponseDTO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getNome() {

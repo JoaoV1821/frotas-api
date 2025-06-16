@@ -46,7 +46,7 @@ public class AgendamentoService {
 
         entity.setVeiculo(veiculo);
         entity.setMotorista(motorista);
-        entity.setStatus(StatusAgendamentoEnum.PENDENTE);
+        entity.setStatus(dto.getAgendamentoStatus());
         entity.setDataSaida(dto.getDataSaida());
         entity.setDataRetorno(dto.getDataRetorno());
         entity.setJustificativa(dto.getJustificativa());
@@ -83,5 +83,30 @@ public class AgendamentoService {
        agendamentoRepository.save(agendamento);
 
        return agendamentoMapper.toDTO(agendamento);
+    }
+
+    public AgendamentoResponseDTO atualizar(Long id, AgendamentoRequestDTO dto) {
+    Optional<AgendamentoModel> agendamentoBd = agendamentoRepository.findById(id);
+        if (agendamentoBd.isEmpty()) {
+            throw new RuntimeException("Agendamento não encontrado");
+        }
+
+        AgendamentoModel agendamento = agendamentoBd.get();
+
+        agendamento.setDataInicio(dto.getDataInicio());
+        agendamento.setStatus(dto.getAgendamentoStatus());
+        agendamento.setQuilometragemInicial(dto.getQuilometragemInicial());
+        agendamento.setObservacaoInicio(dto.getObservacaoInicio());
+        agendamento.setDataFim(dto.getDataFim());
+        agendamento.setQuilometragemFinal(dto.getQuilometragemFinal());
+        agendamento.setObservacaoFim(dto.getObservacaoFim());
+        return agendamentoMapper.toDTO(agendamentoRepository.save(agendamento));
+    }
+
+    public void deletar(Long id) {
+        if (!agendamentoRepository.existsById(id)) {
+            throw new RuntimeException("Agendamento não encontrado");
+        }
+        agendamentoRepository.deleteById(id);
     }
 }

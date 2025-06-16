@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.ufpr.frotas.domain.model.EnderecoModel;
+import com.ufpr.frotas.domain.model.enums.PerfilEnum;
 import com.ufpr.frotas.domain.repository.EnderecoRepository;
 import com.ufpr.frotas.web.mapper.EnderecoMapper;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -55,11 +56,12 @@ public class UserService implements UserDetailsService {
         
         user.setNome(dto.getNome());
         user.setEmail(dto.getEmail());
-        user.setSenha(encriptar(dto.getSenha()));
-        user.setPerfil(dto.getPerfil());
-        user.setAtivo(dto.getAtivo());
+        user.setSenha(dto.getSenha() != null ? encriptar(dto.getSenha()) : "123456");
+        user.setPerfil(dto.getPerfil() != null ? dto.getPerfil() : PerfilEnum.MOTORISTA);
+        user.setAtivo(dto.getAtivo() != null ? dto.getAtivo() : true);
         user.setTelefone(dto.getTelefone());
         user.setCnh(dto.getCnh());
+        user.setCpf(dto.getCpf());
         user.setValidadeCnh(dto.getValidadeCnh());
 
         EnderecoModel endereco = new EnderecoModel();
@@ -110,10 +112,12 @@ public class UserService implements UserDetailsService {
        user.setNome(dto.getNome());
         user.setEmail(dto.getEmail());
         user.setSenha(encriptar(dto.getSenha()));
-        user.setPerfil(dto.getPerfil());
-        user.setAtivo(dto.getAtivo());
+
+        user.setPerfil(dto.getPerfil() != null ? dto.getPerfil() : PerfilEnum.MOTORISTA);
+        user.setAtivo(dto.getAtivo() != null ? dto.getAtivo() : true);
         user.setTelefone(dto.getTelefone());
         user.setCnh(dto.getCnh());
+        user.setCpf(dto.getCpf());
         user.setValidadeCnh(dto.getValidadeCnh());
 
         user.getEndereco().setCep(dto.getEndereco().getCep());

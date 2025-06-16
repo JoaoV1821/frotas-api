@@ -26,7 +26,7 @@ public class VeiculoResponseDTO {
         return this.modelo;
     }
 
-    public String tipo() {
+    public String getTipo() {
         return this.tipo;
     }
 
@@ -34,7 +34,7 @@ public class VeiculoResponseDTO {
         return this.ano;
     }
 
-    public int quilometragemAtual( ) {
+    public int getQuilometragemAtual( ) {
         return this.quilometragemAtual;
     }
 

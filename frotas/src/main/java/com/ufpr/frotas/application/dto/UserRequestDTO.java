@@ -13,9 +13,17 @@ public class UserRequestDTO {
     private Boolean ativo;
     private String telefone;
     private String cnh;
+    private String cpf;
     private String validadeCnh;
     private EnderecoRequestDTO endereco;
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
     public String getNome() {
         return this.nome;

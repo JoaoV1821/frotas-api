@@ -21,12 +21,12 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 @RequestMapping("/api/ocorrencia")
 public class OcorrenciaController {
 
-    private final ManutencaoService manutencaoService;
     @Autowired
     private OcorrenciaService ocorrenciaService;
 
-    OcorrenciaController(ManutencaoService manutencaoService) {
-        this.manutencaoService = manutencaoService;
+    @PostMapping
+    public ResponseEntity<String> test(@RequestBody OcorrenciaRequestDTO dto) {
+        return ResponseEntity.ok("descricao=" + dto.getDescricao() + ", veiculo=" + dto.getVeiculo());
     }
 
     @PostMapping("/create")

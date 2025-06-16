@@ -38,6 +38,7 @@ public class UserModel implements UserDetails {
 
     private String nome;
     private String cnh;
+    private String cpf;
     private String validadeCnh;
     private String email;
     private String senha;
@@ -94,6 +95,10 @@ public class UserModel implements UserDetails {
         return this.cnh;
     }
 
+    public String getCpf() {
+        return this.cpf;
+    }
+
     public String getValidadeCnh() {
         return this.validadeCnh;
     }
@@ -134,6 +139,10 @@ public class UserModel implements UserDetails {
 
     public void setCnh(String cnh) {
         this.cnh = cnh;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public void setValidadeCnh(String validadeCnh) {
