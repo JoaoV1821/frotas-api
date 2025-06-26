@@ -18,28 +18,59 @@ public class AbastecimentoRequestDTO {
     private VeiculoModel veiculo;
     private UserModel motorista;
 
-
     public Long getId() {
-        return this.id;
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getData() {
-        return this.data;
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public TipoCombustivelEnum getTipoCombustivel() {
+        return tipoCombustivel;
+    }
+
+    public void setTipoCombustivel(TipoCombustivelEnum tipoCombustivel) {
+        this.tipoCombustivel = tipoCombustivel;
     }
 
     public Double getValor() {
-        return this.valor;
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
     }
 
     public Double getQuilometragem() {
-        return this.quilometragem;
+        return quilometragem;
+    }
+
+    public void setQuilometragem(Double quilometragem) {
+        this.quilometragem = quilometragem;
     }
 
     public VeiculoModel getVeiculo() {
-        return this.veiculo;
+        return veiculo;
+    }
+
+    public void setVeiculo(VeiculoModel veiculo) {
+        this.veiculo = veiculo;
     }
 
     public UserModel getMotorista() {
-        return this.motorista;
+        return motorista;
+    }
+
+    public void setMotorista(UserModel motorista) {
+        this.motorista = motorista;
     }
 }

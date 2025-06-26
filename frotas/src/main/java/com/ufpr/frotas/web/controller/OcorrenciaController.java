@@ -26,8 +26,9 @@ public class OcorrenciaController {
 
     @PostMapping
     public ResponseEntity<String> test(@RequestBody OcorrenciaRequestDTO dto) {
-        return ResponseEntity.ok("descricao=" + dto.getDescricao() + ", veiculo=" + dto.getVeiculo());
+        return ResponseEntity.ok("descricao=" + dto.getDescricao() + ", veiculoId=" + dto.getVeiculoId());
     }
+
 
     @PostMapping("/create")
     public ResponseEntity<OcorrenciaResponseDTO> cadastrar(@RequestBody OcorrenciaRequestDTO dto)  {

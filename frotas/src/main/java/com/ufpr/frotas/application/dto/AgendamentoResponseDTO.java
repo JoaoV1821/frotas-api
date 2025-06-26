@@ -4,7 +4,7 @@ package com.ufpr.frotas.application.dto;
 import com.ufpr.frotas.domain.model.enums.StatusAgendamentoEnum;
 
 public class AgendamentoResponseDTO {
-    private Long agendamentoId;
+    private Long id;
     
     private StatusAgendamentoEnum statusAgenda;
     private String dataSaida;
@@ -22,69 +22,68 @@ public class AgendamentoResponseDTO {
     private String observacaoInicio;
     private String observacaoFim;
 
-
-  public Long getId() {
-    return this.agendamentoId;
-  }
-
-  public String getDataSaida() {
-    return this.dataSaida;
-  }
-
-  public String getDataRetorno() {
-    return this.dataRetorno;
-  }
-
-  public String getJustificativa() {
-    return this.justificativa;
-  }
-
-  public String getDestino() {
-    return this.destino;
-  }
-
-  public UserResponseDTO getMotorista() {
-    return this.motorista;
-  }
-
-  public VeiculoResponseDTO getVeiculo() {
-    return this.veiculo;
-  }
-
-  public StatusAgendamentoEnum getStatus() {
-    return this.statusAgenda;
-  }
+    public Long getId() {
+        return id;
+    }
 
     public void setId(Long id) {
-        this.agendamentoId = id;
+        this.id = id;
+    }
+
+    public StatusAgendamentoEnum getStatusAgenda() {
+        return statusAgenda;
+    }
+
+    public void setStatusAgenda(StatusAgendamentoEnum statusAgenda) {
+        this.statusAgenda = statusAgenda;
+    }
+
+    public String getDataSaida() {
+        return dataSaida;
     }
 
     public void setDataSaida(String dataSaida) {
         this.dataSaida = dataSaida;
     }
 
+    public String getDataRetorno() {
+        return dataRetorno;
+    }
+
     public void setDataRetorno(String dataRetorno) {
         this.dataRetorno = dataRetorno;
+    }
+
+    public String getJustificativa() {
+        return justificativa;
     }
 
     public void setJustificativa(String justificativa) {
         this.justificativa = justificativa;
     }
 
+    public String getDestino() {
+        return destino;
+    }
+
     public void setDestino(String destino) {
         this.destino = destino;
+    }
+
+    public UserResponseDTO getMotorista() {
+        return motorista;
     }
 
     public void setMotorista(UserResponseDTO motorista) {
         this.motorista = motorista;
     }
 
-    public void setVeiculo(VeiculoResponseDTO veiculo) {
-        this.veiculo = veiculo;
+    public VeiculoResponseDTO getVeiculo() {
+        return veiculo;
     }
 
-    public void setStatus(StatusAgendamentoEnum status) {
-        this.statusAgenda = status;
+    public void setVeiculo(VeiculoResponseDTO veiculo) {
+        this.veiculo = veiculo;
     }
 
     public String getDataInicio() {
@@ -134,5 +133,4 @@ public class AgendamentoResponseDTO {
     public void setObservacaoFim(String observacaoFim) {
         this.observacaoFim = observacaoFim;
     }
-
 }

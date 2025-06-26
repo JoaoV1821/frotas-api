@@ -71,6 +71,10 @@ public class AbastecimentoModel {
         return this.motorista;
     }
 
+    public void setId(Long value) {
+        this.id = value;
+    }
+
     public void setData(String value) {
         this.data = value;
     }

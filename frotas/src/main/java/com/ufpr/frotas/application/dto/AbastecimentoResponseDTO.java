@@ -10,35 +10,66 @@ import lombok.Data;
 public class AbastecimentoResponseDTO {
     private Long id;
     private String data;
-    private TipoCombustivelEnum tipo_combustivel;
+    private TipoCombustivelEnum tipoCombustivel;
     private Double valor;
     private Double quilometragem;
 
-    private VeiculoModel veiculo;
-    private UserModel motorista;
-
+    private VeiculoResponseDTO veiculo;
+    private UserResponseDTO motorista;
 
     public Long getId() {
-        return this.id;
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getData() {
-        return this.data;
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public TipoCombustivelEnum getTipoCombustivel() {
+        return tipoCombustivel;
+    }
+
+    public void setTipoCombustivel(TipoCombustivelEnum tipoCombustivel) {
+        this.tipoCombustivel = tipoCombustivel;
     }
 
     public Double getValor() {
-        return this.valor;
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
     }
 
     public Double getQuilometragem() {
-        return this.quilometragem;
+        return quilometragem;
     }
 
-    public VeiculoModel getVeiculo() {
-        return this.veiculo;
+    public void setQuilometragem(Double quilometragem) {
+        this.quilometragem = quilometragem;
     }
 
-    public UserModel getMotorista() {
-        return this.motorista;
+    public VeiculoResponseDTO getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(VeiculoResponseDTO veiculo) {
+        this.veiculo = veiculo;
+    }
+
+    public UserResponseDTO getMotorista() {
+        return motorista;
+    }
+
+    public void setMotorista(UserResponseDTO motorista) {
+        this.motorista = motorista;
     }
 }

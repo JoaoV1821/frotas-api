@@ -46,7 +46,7 @@ public class AgendamentoService {
 
         entity.setVeiculo(veiculo);
         entity.setMotorista(motorista);
-        entity.setStatus(dto.getAgendamentoStatus());
+        entity.setStatusAgenda(dto.getStatusAgenda());
         entity.setDataSaida(dto.getDataSaida());
         entity.setDataRetorno(dto.getDataRetorno());
         entity.setJustificativa(dto.getJustificativa());
@@ -78,7 +78,7 @@ public class AgendamentoService {
 
        AgendamentoModel agendamento = agendamentoBd.get();
 
-       agendamento.setStatus(status);
+       agendamento.setStatusAgenda(status);
 
        agendamentoRepository.save(agendamento);
 
@@ -94,7 +94,7 @@ public class AgendamentoService {
         AgendamentoModel agendamento = agendamentoBd.get();
 
         agendamento.setDataInicio(dto.getDataInicio());
-        agendamento.setStatus(dto.getAgendamentoStatus());
+        agendamento.setStatusAgenda(dto.getStatusAgenda());
         agendamento.setQuilometragemInicial(dto.getQuilometragemInicial());
         agendamento.setObservacaoInicio(dto.getObservacaoInicio());
         agendamento.setDataFim(dto.getDataFim());

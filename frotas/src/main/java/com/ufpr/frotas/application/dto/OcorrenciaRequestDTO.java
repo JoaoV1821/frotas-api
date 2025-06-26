@@ -1,34 +1,42 @@
 package com.ufpr.frotas.application.dto;
 
-import com.ufpr.frotas.domain.model.UserModel;
-import com.ufpr.frotas.domain.model.VeiculoModel;
-import lombok.Data;
-
-@Data
 public class OcorrenciaRequestDTO {
-    private Long id;
     private String descricao;
     private String dataRegistro;
-    private VeiculoModel veiculo;
-    private UserModel motorista;
-    
-    public Long getId() {
-        return this.id;
-    }
+    private Long veiculoId;
+    private Long motoristaId;
+
+    // getters e setters
 
     public String getDescricao() {
-        return this.descricao;
+        return descricao;
     }
 
-    public VeiculoModel getVeiculo() {
-        return this.veiculo;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
-
-    public UserModel getMotorista() {
-        return this.motorista;
-    } 
 
     public String getDataRegistro() {
-        return this.dataRegistro;
+        return dataRegistro;
+    }
+
+    public void setDataRegistro(String dataRegistro) {
+        this.dataRegistro = dataRegistro;
+    }
+
+    public Long getVeiculoId() {
+        return veiculoId;
+    }
+
+    public void setVeiculoId(Long veiculoId) {
+        this.veiculoId = veiculoId;
+    }
+
+    public Long getMotoristaId() {
+        return motoristaId;
+    }
+
+    public void setMotoristaId(Long motoristaId) {
+        this.motoristaId = motoristaId;
     }
 }
