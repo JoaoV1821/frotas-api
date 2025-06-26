@@ -13,34 +13,61 @@ public class ManutencaoRequestDTO {
     private String descricao;
     private Double valor;
     private Double quilometragem;
-    private VeiculoModel veiculo;
-    
+    private Long veiculo;
 
     public Long getId() {
-        return this.id;
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getData() {
-        return this.data;
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     public ManutencaoEnum getTipo() {
-        return this.tipo;
+        return tipo;
     }
 
-    public VeiculoModel getVeiculo() {
-        return this.veiculo;
+    public void setTipo(ManutencaoEnum tipo) {
+        this.tipo = tipo;
     }
 
     public String getDescricao() {
-        return this.descricao;
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public Double getValor() {
-        return this.valor;
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
     }
 
     public Double getQuilometragem() {
-        return this.quilometragem;
+        return quilometragem;
+    }
+
+    public void setQuilometragem(Double quilometragem) {
+        this.quilometragem = quilometragem;
+    }
+
+    public Long getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(Long veiculo) {
+        this.veiculo = veiculo;
     }
 }

@@ -32,5 +32,17 @@ public class ManutencaoController {
     public ResponseEntity <List<ManuntecaoResponseDTO>> listarTodos() {
         return ResponseEntity.ok(manutencaoService.listarTodos());
     }
+
+    @PostMapping("/update/{id}")
+    public ResponseEntity<ManuntecaoResponseDTO> atualizar(@RequestBody ManutencaoRequestDTO dto) {
+        ManuntecaoResponseDTO updated = manutencaoService.atualizar(dto);
+        return ResponseEntity.ok(updated);
+    }
+
+    @PostMapping("/delete/{id}")
+    public ResponseEntity<Void> deletar(@RequestBody Long id) {
+        manutencaoService.deletar(id);
+        return ResponseEntity.noContent().build();
+    }
     
 }
